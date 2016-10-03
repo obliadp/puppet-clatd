@@ -1,3 +1,5 @@
+https://travis-ci.org/obliadp/puppet-clatd.svg?branch=master
+
 # clatd: installs clatd and manages service and config
 
 For the clatd doc see https://github.com/toreanderson/clatd
