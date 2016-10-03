@@ -1,4 +1,4 @@
-https://travis-ci.org/obliadp/puppet-clatd.svg?branch=master
+[![Build Status](https://travis-ci.org/obliadp/puppet-clatd.svg?branch=master)](https://travis-ci.org/obliadp/puppet-clatd)
 
 # clatd: installs clatd and manages service and config
 
