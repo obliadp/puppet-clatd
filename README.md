@@ -6,6 +6,10 @@ For the clatd doc see https://github.com/toreanderson/clatd
 
 Supports Debian/Ubuntu/Redhat and Systemd/Upstart
 
+## On RedHat/Centos we rely on EPEL
+
+clatd is packaged as part of EPEL, and we use the upstream package
+
 ## installs config to /etc/clatd.conf
 
 Passes anything you give from hiera verbatim to the config file
