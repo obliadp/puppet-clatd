@@ -1,0 +1,3 @@
+fixtures:
+  repositories:
+    stdlib:  git@git.i.bitbit.net:mirror/puppetlabs-stdlib.git

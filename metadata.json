@@ -1,0 +1,36 @@
+{
+    "name": "clatd",
+    "version": "1.0",
+    "author": "Ørjan Ommundsen <orjan@redpill-linpro.com>",
+    "summary": "Installs clatd and handles config for upstart and systemd",
+    "license": "GPL-3.0+",
+    "source": "https://git.i.bitbit.net/puppet-mod/clatd",
+    "operatingsystem_support": [
+        {
+            "operatingsystem": "CentOS",
+            "operatingsystemrelease": [
+                "7"
+            ]
+        },
+        {
+            "operatingsystem": "Debian",
+            "operatingsystemrelease": [
+                "8"
+            ]
+        },
+        {
+            "operatingsystem": "Ubuntu",
+            "operatingsystemrelease": [
+                "14.04",
+                "16.04"
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "puppetlabs/stdlib",
+            "version_requirement": ">= 4.10.0"
+        }
+    ],
+    "data_provider": "hiera"
+}

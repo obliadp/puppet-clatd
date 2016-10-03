@@ -1,0 +1,5 @@
+# managed by puppet
+<% @options.keys.sort.each do |key| -%>
+<%= key %>=<%= @options[key] %>
+<% end -%>
+
