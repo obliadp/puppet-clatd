@@ -7,7 +7,7 @@
     "source": "https://git.i.bitbit.net/puppet-mod/clatd",
     "operatingsystem_support": [
         {
-            "operatingsystem": "CentOS",
+            "operatingsystem": "RedHat",
             "operatingsystemrelease": [
                 "7"
             ]
@@ -31,6 +31,5 @@
             "name": "puppetlabs/stdlib",
             "version_requirement": ">= 4.10.0"
         }
-    ],
-    "data_provider": "hiera"
+    ]
 }

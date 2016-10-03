@@ -30,7 +30,7 @@ clatd::options:
   dns64-servers: 2001:4860:4860::6464, 2001:4860:4860::64 # google, replace if applicable
 ```
 
-For more information about 464XLAT see:
+## For more information about 464XLAT see:
 * https://tools.ietf.org/html/rfc6877
 * https://sites.google.com/site/tmoipv6/464xlat
 
