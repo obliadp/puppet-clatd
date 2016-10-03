@@ -1,6 +1,6 @@
 {
-    "name": "clatd",
-    "version": "1.0",
+    "name": "puppet-clatd",
+    "version": "1.0.0",
     "author": "Ørjan Ommundsen <orjan@redpill-linpro.com>",
     "summary": "Installs clatd and handles config for upstart and systemd",
     "license": "GPL-3.0+",
