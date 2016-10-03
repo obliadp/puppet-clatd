@@ -1,10 +1,13 @@
 {
-    "name": "puppet-clatd",
+    "name": "obliadp-clatd",
     "version": "1.0.0",
     "author": "Ørjan Ommundsen <orjan@redpill-linpro.com>",
     "summary": "Installs clatd and handles config for upstart and systemd",
-    "license": "GPL-3.0+",
-    "source": "https://git.i.bitbit.net/puppet-mod/clatd",
+    "license": "MIT",
+    "source": "https://github.com/obliadp/puppet-clatd.git",
+    "project_page": "http://github.com/obliadp/puppet-clatd",
+    "issues_url": "https://github.com/obliadp/puppet-clatd/issues",
+
     "operatingsystem_support": [
         {
             "operatingsystem": "RedHat",
