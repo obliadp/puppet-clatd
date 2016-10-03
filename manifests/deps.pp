@@ -13,18 +13,19 @@ class clatd::deps {
         'iptables',
         'tayga',
       ]
+
+      ensure_packages($_packages)
     }
+
     'RedHat': {
       case $::lsbmajdistrelease {
-        '7': { # yessss, tayga is packaged for el7
-          if !defined(Package['tayga']){
-            $_packages = [
-              'tayga',
-              'iptables',
-              'iproute',
-            ]
+        '7': {
+
+          package { 'clatd':
+            notify => Service['clatd'],
           }
         }
+
         default: {
           fail("${::lsbmajdistrelease} not supported")
         }
@@ -34,5 +35,4 @@ class clatd::deps {
       fail("${::osfamily} not supported")
     }
   }
-  ensure_packages($_packages)
 }

@@ -63,6 +63,10 @@ describe 'clatd', :type => :class do
                       .that_notifies('Service[clatd]')
         }
 
+        it { should contain_file('/usr/sbin/clatd')
+                    .that_notifies('Service[clatd]')
+        }
+
       end
 
       if os == 'Debian'
@@ -86,21 +90,19 @@ describe 'clatd', :type => :class do
                       .that_notifies(['Exec[clatd reload systemd]','Service[clatd]'])
         }
 
+       it { should contain_file('/usr/sbin/clatd')
+                      .that_notifies('Service[clatd]')
+        }
+
       end
 
       if os == 'RedHat'
-        it { should contain_package('tayga') }
-        it { should contain_package('iptables') }
-        it { should contain_package('iproute') }
+        it { should contain_package('clatd') }
 
         it { should contain_service('clatd')
                      .with_enable(true)
                      .with_ensure('running')
                      .with_provider('systemd')
-        }
-
-        it { should contain_file('/etc/systemd/system/clatd.service')
-                      .that_notifies(['Exec[clatd reload systemd]','Service[clatd]'])
         }
       end
 
@@ -109,10 +111,6 @@ describe 'clatd', :type => :class do
       it { should compile.with_all_deps }
 
       it { should contain_file('/etc/clatd.conf')
-                    .that_notifies('Service[clatd]')
-      }
-
-      it { should contain_file('/usr/sbin/clatd')
                     .that_notifies('Service[clatd]')
       }
 

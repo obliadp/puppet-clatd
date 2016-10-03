@@ -35,6 +35,8 @@ clatd::options:
 ## For more information about 464XLAT see:
 * https://tools.ietf.org/html/rfc6877
 * https://sites.google.com/site/tmoipv6/464xlat
+* https://redpill-linpro.com/techblog/2016/09/02/ipv6-clatd-a-component-of-464xlat-for-fedora-and-epel.html
+* https://en.wikipedia.org/wiki/IPv6_transition_mechanism
 
 Google provides a free dns64 service if your infrastructure lacks one:
 * https://developers.google.com/speed/public-dns/docs/dns64
