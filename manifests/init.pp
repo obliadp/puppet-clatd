@@ -18,16 +18,17 @@ class clatd( $options = {} ) {
 
   case $::service_provider {
     'upstart': {
-      file { 'clatd-init':
-        path   =>'/etc/init/clatd.conf',
+      file { '/etc/init/clatd.conf':
         source => 'puppet:///modules/clatd/init/clatd.upstart',
       }
     }
     'systemd': {
-      file { 'clatd.service':
-        path   => '/etc/systemd/system/clatd.service',
+      file { '/etc/systemd/system/clatd.service':
         source => 'puppet:///modules/clatd/init/clatd.systemd',
-        notify => Exec['clatd reload systemd'],
+        notify => [
+          Exec['clatd reload systemd'],
+          Service['clatd'],
+        ],
       }
     }
     default: {
