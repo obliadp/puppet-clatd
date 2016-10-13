@@ -19,8 +19,7 @@ class clatd::deps {
 
     'RedHat': {
       case $::lsbmajdistrelease {
-        '7': {
-
+        /^(6|7)$/: {
           package { 'clatd':
             notify => Service['clatd'],
           }
