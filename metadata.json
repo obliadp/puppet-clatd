@@ -12,13 +12,15 @@
         {
             "operatingsystem": "RedHat",
             "operatingsystemrelease": [
-                "7"
+                "7",
+                "6"
             ]
         },
         {
             "operatingsystem": "Centos",
             "operatingsystemrelease": [
-                "7"
+                "7",
+                "6"
             ]
         },
         {
