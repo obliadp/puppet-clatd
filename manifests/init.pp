@@ -16,11 +16,11 @@ class clatd( $options = {} ) {
   }
 
   case $::service_provider {
-    'upstart': {
+    # for some reason, el6 has $::service_provider = 'redhat'
+    /(upstart|redhat)/: {
       file { '/etc/init/clatd.conf':
         source => 'puppet:///modules/clatd/init/clatd.upstart',
       }
-
       $_initsystem = 'upstart'
     }
     'systemd': {
@@ -31,16 +31,7 @@ class clatd( $options = {} ) {
           Service['clatd'],
           ],
       }
-
       $_initsystem = 'systemd'
-    }
-    # el6 says 'redhat' for some reason
-    'redhat': {
-      file { '/etc/init/clatd.conf':
-        source => 'puppet:///modules/clatd/init/clatd.upstart',
-      }
-
-      $_initsystem = 'upstart'
     }
     default: {
       fail("not supported on ${::service_provider} service provider")
