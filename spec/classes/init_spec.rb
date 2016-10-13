@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe 'clatd', :type => :class do
 
-  ['Debian', 'Ubuntu', 'RedHat'].each do |os|
+  ['debian8', 'ubuntu14', 'ubuntu16', 'el6', 'el7'].each do |os|
     context "on #{os}" do
 
-      if os == 'Debian'
+      if os == 'debian8'
         let(:facts) { {
           :osfamily                  => 'Debian',
           :operatingsystem           => 'Debian',
@@ -18,12 +18,12 @@ describe 'clatd', :type => :class do
         } }
       end
 
-      if os == 'Ubuntu'
+      if os == 'ubuntu14'
         let(:facts) { {
           :osfamily                  => 'Debian',
           :operatingsystem           => 'Ubuntu',
           :lsbdistid                 => 'Ubuntu',
-          :lsbdistcodename           => 'maverick',
+          :lsbdistcodename           => 'trusty',
           :operatingsystemrelease    => '14.04',
           :operatingsystemmajrelease => '14',
           :lsbmajdistrelease         => '14',
@@ -31,7 +31,31 @@ describe 'clatd', :type => :class do
         } }
       end
 
-      if os == 'RedHat'
+      if os == 'ubuntu16'
+        let(:facts) { {
+          :osfamily                  => 'Debian',
+          :operatingsystem           => 'Ubuntu',
+          :lsbdistid                 => 'Ubuntu',
+          :lsbdistcodename           => 'xenial',
+          :operatingsystemrelease    => '16.04',
+          :operatingsystemmajrelease => '16',
+          :lsbmajdistrelease         => '16',
+          :service_provider          => 'systemd',
+        } }
+      end
+
+      if os == 'el6'
+        let(:facts) { {
+          :osfamily                  => 'RedHat',
+          :operatingsystem           => 'RedHat',
+          :operatingsystemrelease    => '6.5',
+          :operatingsystemmajrelease => '6',
+          :lsbmajdistrelease         => '6',
+          :service_provider          => 'upstart',
+        } }
+      end
+
+      if os == 'el7'
         let(:facts) { {
           :osfamily                  => 'RedHat',
           :operatingsystem           => 'RedHat',

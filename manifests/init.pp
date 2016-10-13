@@ -13,25 +13,37 @@ class clatd( $options = {} ) {
       source => 'puppet:///modules/clatd/bin/clatd',
       mode   => '0755',
     }
+  }
 
-    case $::service_provider {
-      'upstart': {
-        file { '/etc/init/clatd.conf':
-          source => 'puppet:///modules/clatd/init/clatd.upstart',
-        }
+  case $::service_provider {
+    'upstart': {
+      file { '/etc/init/clatd.conf':
+        source => 'puppet:///modules/clatd/init/clatd.upstart',
       }
-      'systemd': {
-        file { '/etc/systemd/system/clatd.service':
-          source => 'puppet:///modules/clatd/init/clatd.systemd',
-          notify => [
-            Exec['clatd reload systemd'],
-            Service['clatd'],
-            ],
-        }
+
+      $_initsystem = 'upstart'
+    }
+    'systemd': {
+      file { '/etc/systemd/system/clatd.service':
+        source => 'puppet:///modules/clatd/init/clatd.systemd',
+        notify => [
+          Exec['clatd reload systemd'],
+          Service['clatd'],
+          ],
       }
-      default: {
-        fail("not supported on ${::service_provider} service provider")
+
+      $_initsystem = 'systemd'
+    }
+    # el6 says 'redhat' for some reason
+    'redhat': {
+      file { '/etc/init/clatd.conf':
+        source => 'puppet:///modules/clatd/init/clatd.upstart',
       }
+
+      $_initsystem = 'upstart'
+    }
+    default: {
+      fail("not supported on ${::service_provider} service provider")
     }
   }
 
@@ -42,7 +54,7 @@ class clatd( $options = {} ) {
   service { 'clatd':
     ensure   => running,
     enable   => true,
-    provider => $::service_provider,
+    provider => $_initsystem,
   }
 
   exec { 'clatd reload systemd':
