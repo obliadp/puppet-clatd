@@ -66,7 +66,7 @@ describe 'clatd', :type => :class do
         } }
       end
 
-      if os == 'Ubuntu'
+      if os == 'ubuntu14'
         it { should contain_package('perl-base') }
         it { should contain_package('perl-modules') }
         it { should contain_package('libnet-ip-perl') }
@@ -90,10 +90,35 @@ describe 'clatd', :type => :class do
         it { should contain_file('/usr/sbin/clatd')
                     .that_notifies('Service[clatd]')
         }
-
       end
 
-      if os == 'Debian'
+      if os == 'ubuntu16'
+        it { should contain_package('perl-base') }
+        it { should contain_package('perl-modules') }
+        it { should contain_package('libnet-ip-perl') }
+        it { should contain_package('libnet-dns-perl') }
+        it { should contain_package('libio-socket-inet6-perl') }
+        it { should contain_package('perl') }
+        it { should contain_package('iproute') }
+        it { should contain_package('iptables') }
+        it { should contain_package('tayga') }
+
+        it { should contain_service('clatd')
+                     .with_enable(true)
+                     .with_ensure('running')
+                     .with_provider('systemd')
+        }
+
+        it { should contain_file('/etc/systemd/system/clatd.service')
+                      .that_notifies(['Exec[clatd reload systemd]','Service[clatd]'])
+        }
+
+        it { should contain_file('/usr/sbin/clatd')
+                    .that_notifies('Service[clatd]')
+        }
+      end
+
+      if os == 'debian8'
         it { should contain_package('perl-base') }
         it { should contain_package('perl-modules') }
         it { should contain_package('libnet-ip-perl') }
@@ -120,7 +145,17 @@ describe 'clatd', :type => :class do
 
       end
 
-      if os == 'RedHat'
+      if os == 'el6'
+        it { should contain_package('clatd') }
+
+        it { should contain_service('clatd')
+                     .with_enable(true)
+                     .with_ensure('running')
+                     .with_provider('upstart')
+        }
+      end
+
+      if os == 'el7'
         it { should contain_package('clatd') }
 
         it { should contain_service('clatd')
