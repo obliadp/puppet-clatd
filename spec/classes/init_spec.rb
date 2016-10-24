@@ -14,7 +14,7 @@ describe 'clatd', :type => :class do
           :operatingsystemrelease    => '8.0',
           :operatingsystemmajrelease => '8',
           :lsbmajdistrelease         => '8',
-          :service_provider          => 'systemd',
+          :clatd_service_provider    => 'systemd',
         } }
       end
 
@@ -27,7 +27,7 @@ describe 'clatd', :type => :class do
           :operatingsystemrelease    => '14.04',
           :operatingsystemmajrelease => '14',
           :lsbmajdistrelease         => '14',
-          :service_provider          => 'upstart',
+          :clatd_service_provider    => 'upstart',
         } }
       end
 
@@ -40,7 +40,7 @@ describe 'clatd', :type => :class do
           :operatingsystemrelease    => '16.04',
           :operatingsystemmajrelease => '16',
           :lsbmajdistrelease         => '16',
-          :service_provider          => 'systemd',
+          :clatd_service_provider    => 'systemd',
         } }
       end
 
@@ -51,7 +51,7 @@ describe 'clatd', :type => :class do
           :operatingsystemrelease    => '6.5',
           :operatingsystemmajrelease => '6',
           :lsbmajdistrelease         => '6',
-          :service_provider          => 'upstart',
+          :clatd_service_provider    => 'upstart',
         } }
       end
 
@@ -62,7 +62,7 @@ describe 'clatd', :type => :class do
           :operatingsystemrelease    => '7.2',
           :operatingsystemmajrelease => '7',
           :lsbmajdistrelease         => '7',
-          :service_provider          => 'systemd',
+          :clatd_service_provider    => 'systemd',
         } }
       end
 
