@@ -7,7 +7,7 @@ class clatd( $options = {} ) {
 
   File { notify => Service['clatd'] }
 
-  unless $::osfamily == 'RedHat' {
+  unless $::operatingsystem =~ /(?i:RedHatEnterprise|CentOS|Fedora|Scientific)/ {
     # debian/ubuntu has no clatd package atm.
     file { '/usr/sbin/clatd':
       source => 'puppet:///modules/clatd/bin/clatd',
@@ -15,8 +15,7 @@ class clatd( $options = {} ) {
     }
   }
 
-  case $::service_provider {
-    # for some reason, el6 has $::service_provider = 'redhat'
+  case $::clatd_service_provider {
     /(upstart|redhat)/: {
       file { '/etc/init/clatd.conf':
         source => 'puppet:///modules/clatd/init/clatd.upstart',
@@ -34,7 +33,7 @@ class clatd( $options = {} ) {
       $_initsystem = 'systemd'
     }
     default: {
-      fail("not supported on ${::service_provider} service provider")
+      fail("not supported on ${::clatd_service_provider} service provider")
     }
   }
 
