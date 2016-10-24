@@ -15,6 +15,8 @@ class clatd::deps {
       ]
 
       ensure_packages($_packages)
+
+      Package[$_packages] ~> Service['clatd']
     }
 
     'RedHat': {
