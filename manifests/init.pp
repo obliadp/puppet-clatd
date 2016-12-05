@@ -17,10 +17,34 @@ class clatd( $options = {} ) {
 
   case $::clatd_service_provider {
     /(upstart|redhat)/: {
+      $_initsystem = 'upstart'
+    }
+    'systemd': {
+      $_initsystem = 'systemd'
+    }
+    'debian': {
+      case $::lsbmajdistrelease {
+        /^14/: {
+          $_initsystem = 'upstart'
+        }
+        /^16/: {
+          $_initsystem = 'systemd'
+        }
+        default: {
+          fail("not supported on lsbmajdistrelease ${::lsbmajdistrelease} for service provider ${::clatd_service_provider}")
+        }
+      }
+    }
+    default: {
+      fail("not supported on ${::clatd_service_provider} service provider")
+    }
+  }
+
+  case $_initsystem {
+    'upstart': {
       file { '/etc/init/clatd.conf':
         source => 'puppet:///modules/clatd/init/clatd.upstart',
       }
-      $_initsystem = 'upstart'
     }
     'systemd': {
       file { '/etc/systemd/system/clatd.service':
@@ -30,10 +54,9 @@ class clatd( $options = {} ) {
           Service['clatd'],
           ],
       }
-      $_initsystem = 'systemd'
     }
     default: {
-      fail("not supported on ${::clatd_service_provider} service provider")
+      fail("not supported on ${::_initsystem} init system")
     }
   }
 
