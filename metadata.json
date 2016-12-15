@@ -1,6 +1,6 @@
 {
     "name": "obliadp-clatd",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "author": "Ørjan Ommundsen <orjan@redpill-linpro.com>",
     "summary": "Installs clatd and handles config for upstart and systemd",
     "license": "MIT",
