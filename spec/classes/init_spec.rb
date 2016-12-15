@@ -94,7 +94,7 @@ describe 'clatd', :type => :class do
 
       if os == 'ubuntu16'
         it { should contain_package('perl-base') }
-        it { should contain_package('perl-modules') }
+        it { should contain_package('perl-modules-5.22') }
         it { should contain_package('libnet-ip-perl') }
         it { should contain_package('libnet-dns-perl') }
         it { should contain_package('libio-socket-inet6-perl') }

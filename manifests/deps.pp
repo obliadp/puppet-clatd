@@ -2,9 +2,18 @@ class clatd::deps {
 
   case $::osfamily {
     'Debian': {
+      case $::lsbmajdistrelease {
+        /^16/: {
+          $_perlmodules = "perl-modules-5.22"
+        }
+        default: {
+          $_perlmodules = "perl-modules"
+        }
+      }
+
       $_packages = [
         'perl-base',
-        'perl-modules',
+        $_perlmodules,
         'libnet-ip-perl',
         'libnet-dns-perl',
         'libio-socket-inet6-perl',
